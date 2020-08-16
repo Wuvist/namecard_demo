@@ -18,10 +18,17 @@ class MyApp extends StatelessWidget{
 class NameCardBasic extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      body: Align(
+        child: Container(
+          width: 370,
+          height: 250,
+          color: Colors.blue,
+          
+        ),
+      ),
+    );
   }
-  
 }
 
 
