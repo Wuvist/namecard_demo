@@ -50,6 +50,7 @@ class NameCardBasic extends StatelessWidget{
                   ),
                 ],
               ),
+              SizedBox(height: 12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -63,6 +64,7 @@ class NameCardBasic extends StatelessWidget{
                     ),),
                 ],
               ),
+              SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
