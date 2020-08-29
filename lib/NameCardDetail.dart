@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'NameCardData.dart';
 
 class NameCardDetail extends StatefulWidget {
+  final int nameCardId;
+  NameCardDetail({Key key, this.nameCardId}) : super(key: key);
+
   @override
   _NameCardDetailState createState() => new _NameCardDetailState();
 }
@@ -13,7 +16,7 @@ class _NameCardDetailState extends State<NameCardDetail> {
   @override
   void initState() {
     super.initState();
-    futureNameCardData = fetchNameCard(1);
+    futureNameCardData = fetchNameCard(this.widget.nameCardId);
   }
 
   @override

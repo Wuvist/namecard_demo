@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:namecard_demo/NameCardDetail.dart';
 
 import 'NameCardData.dart';
 
@@ -22,8 +23,13 @@ class _NameCardListState extends State<NameCardList> {
         title: Text(
           item.name,
           style: _biggerFont,
-        )
-    );
+        ),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => NameCardDetail(nameCardId: item.id)));
+        });
   }
 
   @override
