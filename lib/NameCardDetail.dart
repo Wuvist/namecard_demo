@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:grpc/grpc.dart';
 
-import 'NameCardData.dart';
+import 'NameCardService.dart';
+import 'src/generated/namecard.pb.dart';
 
 class NameCardDetail extends StatefulWidget {
   final int nameCardId;
+
   NameCardDetail({Key key, this.nameCardId}) : super(key: key);
 
   @override
@@ -11,12 +14,13 @@ class NameCardDetail extends StatefulWidget {
 }
 
 class _NameCardDetailState extends State<NameCardDetail> {
-  Future<NameCardData> futureNameCardData;
+  ResponseFuture<GetDetailResp> futureNameCardData;
 
   @override
   void initState() {
     super.initState();
-    futureNameCardData = fetchNameCard(this.widget.nameCardId);
+
+    futureNameCardData = NameCardService().stub.getDetail(GetDetailReq()..id = this.widget.nameCardId);
   }
 
   @override
@@ -27,9 +31,12 @@ class _NameCardDetailState extends State<NameCardDetail> {
           width: 370,
           height: 250,
           color: Colors.blue,
-          child: FutureBuilder<NameCardData>(
+          child: FutureBuilder<GetDetailResp>(
               future: futureNameCardData,
               builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text("${snapshot.error.toString()}");
+                }
                 if (!snapshot.hasData) {
                   return Text("Loading...");
                 }

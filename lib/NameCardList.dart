@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:namecard_demo/NameCardDetail.dart';
+import 'package:grpc/grpc.dart';
+import 'NameCardDetail.dart';
 
-import 'NameCardData.dart';
+import 'NameCardService.dart';
+import 'src/generated/google/protobuf/empty.pb.dart';
+import 'src/generated/namecard.pb.dart';
 
 class NameCardList extends StatefulWidget {
   @override
@@ -9,13 +12,13 @@ class NameCardList extends StatefulWidget {
 }
 
 class _NameCardListState extends State<NameCardList> {
-  Future<List<NameCardListItem>> futureNameCardListData;
+  ResponseFuture<GetListResp> futureNameCardListData;
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   @override
   void initState() {
     super.initState();
-    futureNameCardListData = fetchNameCards();
+    futureNameCardListData = NameCardService().stub.getList(Empty());
   }
 
   Widget _buildRow(NameCardListItem item) {
@@ -38,7 +41,7 @@ class _NameCardListState extends State<NameCardList> {
       appBar: AppBar(
         title: Text('Contact Name cards'),
       ),
-      body: FutureBuilder<List<NameCardListItem>>(
+      body: FutureBuilder<GetListResp>(
           future: futureNameCardListData,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
@@ -50,12 +53,12 @@ class _NameCardListState extends State<NameCardList> {
 
             return ListView.builder(
                 padding: const EdgeInsets.all(16.0),
-                itemCount: snapshot.data.length * 2,
+                itemCount: snapshot.data.result.length * 2,
                 itemBuilder: (context, i) {
                   if (i.isOdd) return Divider();
 
                   final index = i ~/ 2;
-                  return _buildRow(snapshot.data[index]);
+                  return _buildRow(snapshot.data.result[index]);
                 });
           }),
     );
