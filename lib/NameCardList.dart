@@ -19,10 +19,10 @@ class _NameCardListState extends State<NameCardList> {
 
   Widget _buildRow(NameCardListItem item) {
     return ListTile(
-      title: Text(
-        item.name,
-        style: _biggerFont,
-      ),
+        title: Text(
+          item.name,
+          style: _biggerFont,
+        )
     );
   }
 
@@ -33,25 +33,25 @@ class _NameCardListState extends State<NameCardList> {
         title: Text('Contact Name cards'),
       ),
       body: FutureBuilder<List<NameCardListItem>>(
-        future: futureNameCardListData,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Text("${snapshot.error.toString()}");
-          }
-          if (!snapshot.hasData) {
-            return Text("Loading..");
-          }
+          future: futureNameCardListData,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text("${snapshot.error.toString()}");
+            }
+            if (!snapshot.hasData) {
+              return Text("Loading..");
+            }
 
-          return ListView.builder(
-              padding: const EdgeInsets.all(16.0),
-              itemCount: snapshot.data.length * 2,
-              itemBuilder: (context, i) {
-                if (i.isOdd) return Divider();
+            return ListView.builder(
+                padding: const EdgeInsets.all(16.0),
+                itemCount: snapshot.data.length * 2,
+                itemBuilder: (context, i) {
+                  if (i.isOdd) return Divider();
 
-                final index = i ~/ 2;
-                return _buildRow(snapshot.data[index]);
-              });
-        }),
+                  final index = i ~/ 2;
+                  return _buildRow(snapshot.data[index]);
+                });
+          }),
     );
   }
 }
