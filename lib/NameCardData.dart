@@ -21,7 +21,7 @@ class NameCardData {
 
 Future<NameCardData> fetchNameCard(int id) async {
   final response =
-      await http.get('https://jsonplaceholder.typicode.com/namecard/$id');
+      await http.get('http://10.0.0.12:8000/$id.json');
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
