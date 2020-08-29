@@ -21,11 +21,11 @@ List<GetDetailResp> testData = [
 class NameCardService extends NameCardServiceBase {
   @override
   Future<GetDetailResp> getDetail(ServiceCall call, GetDetailReq request) async {
-    testData.forEach((element) {
-      if (element.id == request.id) {
-        return element;
+    for (var item in testData) {
+      if (item.id == request.id) {
+        return item;
       }
-    });
+    }
 
     return null;
   }
@@ -36,7 +36,7 @@ class NameCardService extends NameCardServiceBase {
     testData.forEach((element) {
       result.result.add(NameCardListItem()
         ..id = element.id
-      ..name = element.name);
+        ..name = element.name);
     });
 
     return result;
