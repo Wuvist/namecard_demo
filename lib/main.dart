@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'NameCardData.dart';
+
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget{
   }
 }
 
-class NameCardBasic extends StatelessWidget{
+class NameCardBasic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,16 +38,20 @@ class NameCardBasic extends StatelessWidget{
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Flutter McFlutter',
+                      Text(
+                        'Flutter McFlutter',
                         style: TextStyle(
                           fontSize: 30,
-                        ),),
+                        ),
+                      ),
                       //Text('Flutter McFlutter', style: Theme.of(context).textTheme.headline,),
                       //Text('Experienced App Developer'),
-                      Text('Experienced App Developer',
+                      Text(
+                        'Experienced App Developer',
                         style: TextStyle(
                           fontSize: 20,
-                        ),),
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -54,14 +60,18 @@ class NameCardBasic extends StatelessWidget{
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text('123 Main Street',
+                  Text(
+                    '123 Main Street',
                     style: TextStyle(
                       fontSize: 20,
-                    ),),
-                  Text('(415) 555-0198',
+                    ),
+                  ),
+                  Text(
+                    '(415) 555-0198',
                     style: TextStyle(
                       fontSize: 20,
-                    ),),
+                    ),
+                  ),
                 ],
               ),
               SizedBox(height: 30),
@@ -70,19 +80,31 @@ class NameCardBasic extends StatelessWidget{
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Icon(Icons.accessibility, size: 40,),
+                    child: Icon(
+                      Icons.accessibility,
+                      size: 40,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Icon(Icons.timer, size: 40,),
+                    child: Icon(
+                      Icons.timer,
+                      size: 40,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Icon(Icons.phone_android, size: 40,),
+                    child: Icon(
+                      Icons.phone_android,
+                      size: 40,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Icon(Icons.phone_iphone, size: 40,),
+                    child: Icon(
+                      Icons.phone_iphone,
+                      size: 40,
+                    ),
                   ),
                 ],
               ),
@@ -93,5 +115,3 @@ class NameCardBasic extends StatelessWidget{
     );
   }
 }
-
-
