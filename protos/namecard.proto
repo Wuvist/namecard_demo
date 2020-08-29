@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package xcl;
+
+service NameCard {
+  rpc getList (google.protobuf.Empty) returns (GetListResp) {}
+  rpc getDetail (GetDetailReq) returns (GetDetailResp) {}
+}
+
+message NameCardListItem {
+  string name = 1;
+  int32 id = 2;
+}
+
+message GetListResp {
+  repeated NameCardListItem result = 1;
+}
+
+message GetDetailReq {
+  int32 id = 1;
+}
+
+message GetDetailResp {
+  int32 id = 1;
+  string name = 2;
+  string title = 3;
+  string address = 4;
+  string tel = 5;
+}
