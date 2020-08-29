@@ -17,7 +17,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class NameCardBasic extends StatelessWidget {
+class NameCardBasic extends StatefulWidget {
+  @override
+  _NameCardBasicState createState() => new _NameCardBasicState();
+}
+
+class _NameCardBasicState extends State<NameCardBasic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
