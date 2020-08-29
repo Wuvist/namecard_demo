@@ -2,7 +2,7 @@ import 'package:grpc/grpc.dart';
 import 'src/generated/namecard.pbgrpc.dart';
 
 final channel = ClientChannel(
-  '10.0.0.12',
+  '10.0.2.2',
   port: 50051,
   options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
 );
