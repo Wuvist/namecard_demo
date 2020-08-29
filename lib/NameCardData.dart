@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+const serverAddress = "10.0.0.12:8000";
+
 class NameCardListItem {
   final String name;
   final int id;
@@ -17,7 +19,7 @@ class NameCardListItem {
 }
 
 Future<List<NameCardListItem>> fetchNameCards() async {
-  final response = await http.get('http://10.0.0.12:8000/list.json');
+  final response = await http.get('http://$serverAddress/list.json');
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -54,8 +56,7 @@ class NameCardData {
 }
 
 Future<NameCardData> fetchNameCard(int id) async {
-  final response =
-      await http.get('http://10.0.0.12:8000/$id.json');
+  final response = await http.get('http://$serverAddress/$id.json');
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
